@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _throwForce = 5.0f;
 
     public bool _isHoldingSeed;
+    public GameObject player;
 
     private Transform _cameraTrans;
     private float _rotationX;
@@ -52,7 +53,7 @@ public class Player : MonoBehaviour
         // Fix this line so that the Player GameObject is the PARENT of the seed.
         // That way, the seed will move with the player.
 
-        GameObject seed = Instantiate(_seedPrefab);
+        GameObject seed = Instantiate(_seedPrefab, player.transform);
 
         // STEP 4 -------------------------------------------------------------
 
@@ -67,7 +68,7 @@ public class Player : MonoBehaviour
         //      left and slightly above the player.
         // You will probably also need Transform.TransformDirection() ;)
 
-        
+        seed.transform.position = player.transform.position +player.transform.TransformDirection(Vector3.left)*_spawnLeft+player.transform.TransformDirection(Vector3.up)*_spawnUp;
         // STEP 5 -------------------------------------------------------------
     }
     
@@ -90,7 +91,7 @@ public class Player : MonoBehaviour
 
         // STEP 7 -------------------------------------------------------------
         // Set the animation parameters to play the throwing animation.
-        
+        _animator.SetBool("throwing", true);
 
 
         // STEP 7 -------------------------------------------------------------
@@ -120,8 +121,14 @@ public class Player : MonoBehaviour
         // Set the animation parameters to play the walking animation.
         // You might need the mouseY, mouseX, vertical, and horizontal variables
         //      that are above this step :)
-
-
+        Debug.Log("Mouse X: " + mouseX + " Mouse Y: " + mouseY);
+        if (Input.GetAxis("Vertical")!=0||Input.GetAxis("Horizontal")!=0||mouseY!=0||mouseX!=0){
+            _animator.SetBool("walking",true);
+        }
+        else{
+            _animator.SetBool("walking",false);
+        }
+        
         // STEP 8 -------------------------------------------------------------
     }
 }
