@@ -8,6 +8,7 @@ public class Bird : MonoBehaviour
 
     private bool _doPopUpAnimation;
     private float _popUpTimeRemaining;
+    public Transform position;
 
     // STEP 2 -----------------------------------------------------------------
     // OnEnable is another Unity method like Start() and Update() that's called
