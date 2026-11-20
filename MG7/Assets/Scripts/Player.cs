@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     private float _rotationY;
     private Rigidbody _seedRB;
     private Collider _seedCollider;
-    public GameObject player;
 
     // ------------------------------------------------------------------------
     private void Start ()

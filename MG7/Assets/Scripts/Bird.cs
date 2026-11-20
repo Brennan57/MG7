@@ -26,7 +26,8 @@ public class Bird : MonoBehaviour
     //      coded! :)
     private void OnEnable()
     {
-        
+        _doPopUpAnimation=true;
+        _popUpTimeRemaining = _popUpTime;
     }
     // STEP 2 -----------------------------------------------------------------
 

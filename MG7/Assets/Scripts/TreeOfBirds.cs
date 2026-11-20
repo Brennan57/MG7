@@ -7,9 +7,23 @@ public class TreeOfBirds : MonoBehaviour
     public float interdis;
     public GameObject player;
 
+    void Start()
+    {
+
+        sparrows = GetComponentsInChildren<Bird>(true);
+        /*
+            for(int i=0; i<sparrows.Length; i++){
+                if(sparrows[i].gameObject.tag=="spar"){
+                    sparrows[i].gameObject.SetActive(false);
+            }
+        }
+        */
+        
+    }
+
     private void Update(){
-        Debug.Log(player);
-        for(int i=0; i<sparrows.Length; i++)
+        
+        for(int i=0; i<4; i++)
             {
                 if(Vector3.Distance(sparrows[i].transform.position, player.transform.position)<interdis){
                     sparrows[i].gameObject.SetActive(true);
